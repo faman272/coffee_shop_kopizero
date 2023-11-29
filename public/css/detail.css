@@ -1,0 +1,203 @@
+
+.box-detail {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: url(../image/home-bg.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    
+}
+
+.box-detail img {
+    width: 300px;
+}
+
+.container-detail {
+    display: flex;
+    border-radius: var(--border-radius-hover);
+    border: var(--border);
+    justify-content: center;
+    align-items: center;
+    gap: 4rem;
+    padding: 4rem;
+    margin-top: 12rem;
+    margin-bottom: 12rem;
+    background: #f2f2f2;
+    box-shadow: 12px 15px 25px -18px rgba(0,0,0,0.7);
+-webkit-box-shadow: 12px 15px 25px -18px rgba(0,0,0,0.7);
+-moz-box-shadow: 12px 15px 25px -18px rgba(0,0,0,0.7);
+}
+
+
+.desc-container {
+    margin-top: 1rem;
+    padding: 0.5rem;
+    font-size: 12px;
+}
+
+
+
+fieldset {
+	padding: 0;
+	margin: 0;
+	border: 0;
+	max-width: 340px;
+	border-radius: 20px;
+	width: 100%;
+}
+
+legend {
+	font-size: 22px;
+	font-weight: 600;
+	color: #191919;
+	margin: 0;
+	background: #edf4fe;
+	width: 100%;
+	padding: 20px;
+	box-sizing: border-box;
+	border-radius: 10px 10px 0 0;
+	border: 2px solid #C3AE89;
+	display: flex;
+}
+
+fieldset label {
+	font-weight: 300;
+	font-size: 16px;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	flex: 1;
+	box-sizing: border-box;
+	display: flex;
+	padding: 20px 20px 0px 50px;
+	font-weight: 500;
+	color: #191919;
+	-webkit-tap-highlight-color: transparent;
+}
+
+fieldset input[type="radio"] {
+	position: relative;
+	appearance: none;
+	-webkit-appearance: none;
+	transition: linear 0.8s;
+	height: 0;
+	width: 0;
+	-webkit-tap-highlight-color: transparent;
+}
+
+fieldset input[type="radio"]:after {
+	content: "";
+	position: absolute;
+	height: 16px;
+	width: 16px;
+	top: -10.5px;
+	left: -30px;
+	border-radius: 20px;
+	border: 2px solid #C3AE89;
+	transition: linear 0.2s;
+	cursor: pointer;
+}
+
+fieldset input[type="radio"]:checked:after {
+	content: "";
+	position: absolute;
+	height: 16px;
+	width: 16px;
+	background: #C3AE89;
+	transition: linear 0.2s;
+	cursor: pointer;
+}
+
+fieldset input[type="radio"]:checked:before {
+	content: "";
+	position: absolute;
+	height: 8px;
+	width: 8px;
+	border-radius: 4px;
+	background: #fff;
+	left: -24px;
+	top: -4.5px;
+	z-index: 1;
+	cursor: pointer;
+}
+
+
+.quantity-container {
+    padding: 0.5rem;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+.quantity-container input[type="number"]::-webkit-inner-spin-button, /* Chrome, Safari, Edge, Opera */
+.quantity-container input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.quantity-container input[type="number"] {
+    text-align: center;
+    border-radius: var(--border-radius-hover);
+    border: var(--border);
+    background-color: #f2f2f2;
+    width: 15%;
+}
+
+.btn-container {
+    display: flex;
+    justify-content: end;
+    gap: 1rem;
+}
+
+@media (max-width: 576px) {
+    .box-detail {
+        margin-top: 8rem; /* Adjust the margin for smaller screens */
+    }
+
+    .box-detail img {
+        width: 50%; /* Make the image fill the container */
+    }
+    fieldset h1 {
+        font-size: 24px;
+    }
+
+    .container-detail {
+        flex-direction: column; /* Stack items vertically on smaller screens */
+        gap: 2rem; /* Adjust the gap between items */
+        margin: 6rem 1rem; /* Adjust margin for smaller screens */
+    }
+
+    .desc-container {
+        font-size: 14px; /* Adjust font size for smaller screens */
+    }
+
+    .desc-container h2 {
+        font-size: 16px;
+    }
+
+    .radio-item-container {
+        padding: 2rem;
+    }
+
+    fieldset {
+        max-width: 100%; /* Make the fieldset width 100% on smaller screens */
+    }
+
+    fieldset label {
+        padding: 10px 10px 0 20px; /* Adjust padding for labels on smaller screens */
+    }
+
+    .quantity-container {
+        flex-direction: column; /* Stack items vertically on smaller screens */
+        align-items: flex-start; /* Align items to the start on smaller screens */
+    }
+
+    .quantity-container input[type="number"] {
+        width: 100%; /* Make the input fill the container */
+    }
+
+    .btn-container {
+        justify-content: center; /* Center items on smaller screens */
+    }
+}

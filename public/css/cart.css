@@ -1,0 +1,140 @@
+
+/* CART SECTION */
+
+.active-state {
+    margin-bottom: 2rem;
+}
+
+.empty-cart {
+  margin-bottom: 20rem;
+}
+
+.active-state a {
+    font-size: 1.5rem;
+    color: #333;
+}
+
+.active-state .active-home {
+    color: #ccc;
+}
+
+.active-state span {
+    font-size: 1.5rem;
+}
+
+.cart {
+    padding: 0 30px 0 30px;
+    background-color: #f2f2f2;
+    /* background: url(../image/book-bg.jpg); */
+    background-size: cover;
+  }
+
+ .cart h1 {
+    font-size: 2rem;
+    margin-top: 10rem;
+    margin-bottom: 2rem;
+    text-align: center;
+ } 
+
+ .cart table {
+    width: 100%;
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+}
+  
+  .cart .heading {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 30px;
+    color: #333;
+  }
+ 
+  .table-container img {
+    width: 20%;
+  }
+
+  .cart .table-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .cart .table-container th,
+  .cart .table-container td {
+    padding: 10px 20px;
+    border: 1px solid #ccc;
+  }
+  
+  .cart .table-container th {
+    background-color: #f9f9f9;
+    text-align: left;
+  }
+  
+  .cart .table-container td {
+    text-align: center;
+  }
+  
+  .cart .table-container td.quantity {
+    width: 100px;
+  }
+  
+  .cart .table-container td.price {
+    width: 150px;
+  }
+  
+  .cart .table-container td.total {
+    width: 150px;
+  }
+
+  .btn-action span {
+    font-size: 2.5rem;
+  }
+  
+  .btn-action {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .button-container {
+    display: flex;
+    justify-content: space-between;
+  }
+
+/* Media query for small screens (portrait orientation) */
+@media (max-width: 576px) {
+  .cart h1 {
+    font-size: 1rem;
+    margin-top: 10rem;
+    margin-bottom: 1rem;
+  }
+
+  .cart table {
+    font-size: 1rem;
+  }
+
+  .table-container img {
+    width: 30%;
+  }
+
+  .cart .table-container th,
+  .cart .table-container td {
+    padding: 2px 2px;
+  }
+
+  .btn-action .btn span {
+    font-size: 1.5rem;
+    width: 10px;
+  }
+  .cart .btn {
+    font-size: 1rem;
+  }
+
+  .empty-cart {
+    margin-bottom: 50rem;
+  }
+}
+
+

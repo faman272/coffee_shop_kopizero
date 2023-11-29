@@ -1,0 +1,36 @@
+.notification {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10rem;
+}
+
+.notif-container a {
+    text-decoration: underline;
+    color: var(--border);
+    font-style: italic;
+    font-size: 20px;
+}
+
+.notif-container {
+    border: var(--border);
+    border-radius: var(--border-radius);
+    display: flex;
+    align-items: center;
+    padding: 2.5rem;
+    gap: 5rem;
+}
+
+.notif-container p {
+    font-size: 20px;
+    color: var(--border);
+}
+
+
+.container {
+    display: flex;
+    gap: 2rem;
+}
+
+

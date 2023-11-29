@@ -1,0 +1,108 @@
+.login-container {
+    margin-top: 8rem;
+    padding: 5rem;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: url(../image/home-bg.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.img-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 2rem 0 2rem 0;
+}
+
+.login-container form {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+    margin: 0 auto 2rem auto;
+    background: #f2f2f2;
+    max-width: 60rem;
+    border-radius: var(--border-radius-hover);
+    padding: 4rem;
+    border: var(--border);
+    box-shadow: 12px 15px 25px -18px rgba(0, 0, 0, 0.7);
+    -webkit-box-shadow: 12px 15px 25px -18px rgba(0, 0, 0, 0.7);
+    -moz-box-shadow: 12px 15px 25px -18px rgba(0, 0, 0, 0.7);
+}
+
+
+.input-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.input-container input {
+    width: 100%;
+    padding: 1rem 1.2rem;
+    font-size: 1.6rem;
+    background: none;
+    text-transform: none;
+    color: var(--main-color);
+    border: var(--border);
+    border-radius: var(--border-radius-hover);
+}
+
+.input-container input:focus {
+    border: var(--border-hover);
+    /* border-radius: var(--border-radius-hover); */
+}
+
+.label-container {
+    width: 100%;
+}
+
+.label-container label {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--main-color);
+    padding: 0.5rem;
+    margin-left: 1rem;
+}
+
+.check-container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin: 1rem 0 1rem 0;
+}
+
+.check-container label {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--main-color);
+    padding: 0.5rem;
+}
+
+.check-container input {
+    width: 1.5rem;
+    height: 1.5rem;
+    margin-left: 1rem;
+}
+
+.btn-container {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    align-items: flex-end;
+    padding: 1rem;
+}
+
+.btn-container a{
+    font-size: 1.4rem;
+    color: var(--main-color);
+}
+

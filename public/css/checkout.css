@@ -1,0 +1,313 @@
+.book {
+  background: url(../image/book-bg.jpg);
+  /* background: #f2f2f2; */
+  background-position: center;
+  background-size: cover;
+  margin-top: 8rem;
+}
+
+.book form {
+  margin: 0 auto 2rem auto;
+  background: #f2f2f2;
+  max-width: 60rem;
+  border-radius: var(--border-radius-hover);
+  padding: 4rem;
+  border: var(--border);
+  box-shadow: 12px 15px 25px -18px rgba(0,0,0,0.7);
+-webkit-box-shadow: 12px 15px 25px -18px rgba(0,0,0,0.7);
+-moz-box-shadow: 12px 15px 25px -18px rgba(0,0,0,0.7);
+
+}
+
+.metode-pembayaran {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  font-size: 14px;
+  color: var(--main-color);
+}
+
+.metode-pembayaran label {
+  font-size: 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  flex: 1;
+  box-sizing: border-box;
+  display: flex;
+  padding: 20px 20px 0px 50px;
+  font-weight: 600; 
+  color: var(--main-color);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.metode-pembayaran input[type="radio"] {
+  position: relative;
+  appearance: none;
+  -webkit-appearance: none;
+  transition: linear 0.8s;
+  height: 0;
+  width: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.metode-pembayaran input[type="radio"]:after {
+  content: "";
+  position: absolute;
+  height: 16px;
+  width: 16px;
+  top: -10.5px;
+  left: -30px;
+  border-radius: 20px;
+  border: 2px solid #C3AE89;
+  transition: linear 0.2s;
+  cursor: pointer;
+}
+
+.metode-pembayaran input[type="radio"]:checked:after {
+  content: "";
+  position: absolute;
+  height: 16px;
+  width: 16px;
+  background: #C3AE89;
+  transition: linear 0.2s;
+  cursor: pointer;
+}
+
+.metode-pembayaran input[type="radio"]:checked:before {
+  content: "";
+  position: absolute;
+  height: 8px;
+  width: 8px;
+  border-radius: 4px;
+  background: #fff;
+  left: -24px;
+  top: -4.5px;
+  z-index: 1;
+  cursor: pointer;
+}
+
+.book form .box {
+  width: 100%;
+  padding: 1rem 1.2rem;
+  border-radius: .5rem;
+  font-size: 1.6rem;
+  background: none;
+  text-transform: none;
+  color: var(--main-color);
+  border: var(--border);
+  margin: .7rem 0;
+}
+
+input[type="number"]:disabled {
+  color: rgb(143, 134, 116);
+}
+
+input[type="email"]:disabled {
+  color: rgb(143, 134, 116);
+}
+
+input[type="text"]:disabled {
+  color: rgb(143, 134, 116);
+}
+
+.book form .box:focus {
+  border: var(--border-hover);
+}
+
+.form-checkout h2 {
+  color: var(--main-color);
+}
+
+.form-checkout h1 {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+}
+
+ul {
+  list-style-type: none;
+}
+
+li {
+  display: inline-block;
+}
+
+.btn-checkout {
+  display: flex;
+  justify-content: space-between;
+
+}
+
+.btn-pembayaran {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2rem;
+}
+
+
+
+/* Pembayaran */
+.book .pembayaran {
+  margin: 0 auto 2rem auto;
+  background: #f2f2f2;
+  max-width: 60rem;
+  border-radius: var(--border-radius-hover);
+  padding: 5rem;
+  border: var(--border);
+  box-shadow: 12px 15px 25px -18px rgba(0,0,0,0.7);
+-webkit-box-shadow: 12px 15px 25px -18px rgba(0,0,0,0.7);
+-moz-box-shadow: 12px 15px 25px -18px rgba(0,0,0,0.7);
+
+}
+
+.book .pembayaran .box {
+  width: 100%;
+  padding: 1rem 1.2rem;
+  font-size: 1.6rem;
+  background: none;
+  text-transform: none;
+  color: var(--main-color);
+  border-bottom: var(--border); /* Change this line */
+  margin: .7rem 0;
+}
+
+.book .pembayaran .box:focus {
+  border: var(--border-hover);
+}
+
+.pembayaran h1 {
+  font-size: 24px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.pembayaran .box {
+  display: flex;
+  justify-content: space-between;
+}
+
+.pembayaran .box span {
+  font-weight: 700;
+}
+
+.accordion {
+  background-color: #f2f2f2;
+  border-bottom: 2px solid var(--main-color); 
+  color: #444;
+  cursor: pointer;
+  padding: 12px;
+  width: 100%;
+  text-align: left;
+  font-size: 15px;
+  transition: 0.4s;
+}
+
+.accordion span {
+  font-weight: bold;
+}
+
+.accordion:after {
+  content: '\02795'; /* Unicode character for "plus" sign (+) */
+  font-size: 13px;
+  color: #777;
+  float: right;
+  margin-left: 5px;
+}
+
+.accordion.active:after {
+  content: "\2796"; /* Unicode character for "minus" sign (-) */
+}
+
+.panel {
+  padding: 0 18px;
+  display: none;
+  overflow: hidden;
+}
+
+.clock-container {
+  display: flex;
+  justify-content: flex-end;
+}
+
+#clockdiv {
+  color: #fff;
+  display: inline-block;
+  font-weight: 600;
+  text-align: center;
+  font-size: 16px; 
+}
+
+#clockdiv > div {
+  padding: 5px; 
+  border-radius: 3px;
+  background: #EBE3D5;
+  display: inline-block;
+}
+
+#clockdiv div > span {
+  padding: 10px; 
+  border-radius: 3px;
+  background: #C3AE89;
+  display: inline-block;
+}
+
+.transaksi {
+  border-bottom: var(--border);
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.transaksi p {
+  font-size: 14px;
+}
+
+.transaksi span {
+  font-weight: 700;
+  color: var(--main-color);
+}
+
+.transaksi .qris {
+  width: 40%;
+  border: var(--border);
+}
+
+.transaksi .qris-sup {
+  width: 70%;
+}
+
+
+@media (max-width: 576px) {
+  
+  .accordion span {
+    font-size: 12px;
+    font-weight: bold;
+  }
+
+
+.transaksi p {
+  font-size: 12px;
+}
+
+.transaksi span {
+  font-weight: 700;
+  color: var(--main-color);
+}
+
+.transaksi .qris {
+  width: 60%;
+  border: var(--border);
+}
+
+.transaksi .qris-sup {
+  width: 100%;
+}
+
+}
+
+

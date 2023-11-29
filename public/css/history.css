@@ -1,0 +1,67 @@
+.history {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10rem;
+}
+
+.history a {
+    display: flex;
+    justify-content: space-between;
+    gap: 4rem;
+    padding: 3rem;
+    width: 100%;
+}
+
+.tgl-harga h1 {
+    font-size: 22px;
+}
+
+.status {
+    /* background-color: antiquewhite; */
+    display: flex;
+    justify-content: flex-end;
+    align-items: end;
+}
+
+.status h2 {
+    border: var(--border);
+    border-radius: var(--border-radius);
+    padding: 1rem;
+    font-size: 20px;
+}
+
+.status .diterima {
+    color: green;
+}
+
+.status .dibatalkan {
+    color: red;
+}
+
+.empty-history {
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
