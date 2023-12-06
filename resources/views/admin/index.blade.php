@@ -1,4 +1,3 @@
-
 @include('admin.layouts.main')
 
 <main class="app-content">
@@ -8,7 +7,7 @@
         </div>
         <ul class="app-breadcrumb breadcrumb">
             <li class="breadcrumb-item"><i class="bi bi-house-door fs-6"></i></li>
-            <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
+            <li class="breadcrumb-item"><a href="/dashboard">Dashboard</a></li>
         </ul>
     </div>
 
@@ -135,8 +134,17 @@
         }],
         tooltip: {
             trigger: 'axis',
-            formatter: "<b>{b0}:</b> Rp. {c0}"
+            formatter: function(params) {
+                return "<b>" + params[0].name + ":</b> " + new Intl.NumberFormat('id-ID', {
+                    style: 'currency',
+                    currency: 'IDR',
+                    minimumFractionDigits: 0,
+                    maximumFractionDigits: 0
+                }).format(params[0].value);
+            }
         }
+
+
     };
 
     const supportRequests = {

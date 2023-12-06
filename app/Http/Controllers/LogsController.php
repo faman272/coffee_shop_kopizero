@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\LogAccount;
 use Illuminate\Http\Request;
 use App\Models\Log;
 use App\Models\LogCart;
@@ -33,5 +34,14 @@ class LogsController extends Controller
         $logs = LogOrder::all();
 
         return view('admin.logs.logorder', compact('logs'));
+    }
+
+
+    public function logAkun()
+    {
+            
+            $logs = LogAccount::all();
+    
+            return view('admin.logs.logakun', compact('logs'));
     }
 }

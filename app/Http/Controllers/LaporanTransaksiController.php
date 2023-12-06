@@ -17,7 +17,6 @@ class LaporanTransaksiController extends Controller
         $mulai = $request->input('tglm');
         $selesai = $request->input('tgls');
         $semuadata = DB::select('CALL pTanggalLaporan(?, ?)', array($mulai, $selesai));
-
         // Store the result and dates in the session
         $request->session()->put('report', $semuadata);
         $request->session()->put('mulai', $mulai);

@@ -60,7 +60,8 @@ class CartController extends Controller
 
         $cart->save();
 
-        return redirect("/cart");
+        Alert::success('Menu di tambahkan ke keranjang');
+        return redirect("/");
     }
 
     public function show($id_keranjang)

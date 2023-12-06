@@ -16,7 +16,7 @@ class DashboardPesananController extends Controller
      */
     public function index()
     {
-        $orders = Order::all();
+        $orders = Order::where('status', '!=', 'Menunggu Pembayaran')->orderBy('created_at', 'desc')->get();
 
         return view('admin.pesanan.index', compact('orders'));
     }

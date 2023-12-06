@@ -13,7 +13,11 @@ use RealRashid\SweetAlert\Facades\Alert;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 
+
+use App\Jobs\CancelOrderJob;
+use Illuminate\Support\Facades\Queue;
 
 use App\Events\UserOrder;
 
@@ -34,7 +38,7 @@ class CheckoutController extends Controller
             return redirect('/');
         }
 
-        // Get the user's orders with a status of 'pending'
+        // Get the user's orders with a status of "Menunggu Pembayaran"
         $orders = $user->orders()->where('status', 'Menunggu Pembayaran')->get();
 
         $total = 0;
@@ -55,7 +59,7 @@ class CheckoutController extends Controller
 
     public function generateNoOrder()
     {
-        return str_pad(rand(0, 999999), 6, '0', STR_PAD_LEFT);
+        return rand(100000, 999999);
     }
 
     public function store(Request $request)
@@ -63,9 +67,42 @@ class CheckoutController extends Controller
         $user = Auth::user();
         $cartItems = $user->carts;
 
-        // Check if the user has any pending orders
+        // Check if cart is empty
+        if ($cartItems->isEmpty()) {
+            Alert::warning('Keranjang anda kosong');
+            return redirect('/');
+        }
+
+        // Check if there are any pending transactions
         $pendingOrder = $user->orders()->where('status', 'Menunggu Pembayaran')->first();
+
         if ($pendingOrder) {
+            // For each cart item, check if a DetailOrder already exists
+            foreach ($cartItems as $cartItem) {
+                $detailOrder = DetailOrder::where('no_order', $pendingOrder->no_order)
+                    ->where('menu_id', $cartItem->menu_id)
+                    ->first();
+
+                // If a DetailOrder does not exist, create a new one
+                if (!$detailOrder) {
+                    $detailOrder = new DetailOrder;
+                    $detailOrder->no_order = $pendingOrder->no_order;
+                    $detailOrder->menu_id = $cartItem->menu_id;
+                }
+
+                // Update the DetailOrder
+                $detailOrder->qty = $cartItem->qty;
+                $detailOrder->harga = $cartItem->harga;
+                $detailOrder->jenis_harga = $cartItem->jenis_harga;
+                $detailOrder->subtotal = $cartItem->subtotal;
+                $detailOrder->save();
+            }
+
+            // Delete any DetailOrder that does not correspond to an item in the cart
+            DetailOrder::where('no_order', $pendingOrder->no_order)
+                ->whereNotIn('menu_id', $cartItems->pluck('menu_id'))
+                ->delete();
+
             return redirect("/checkout");
         }
 
@@ -89,6 +126,8 @@ class CheckoutController extends Controller
             $detailOrder->save();
         }
 
+        
+
 
         return redirect("/checkout");
     }
@@ -97,6 +136,11 @@ class CheckoutController extends Controller
 
     public function transaksi(Request $request, $no_order)
     {
+
+        if ($request->input('metode_pembayaran') == null) {
+            Alert::warning('Silahkan pilih metode pembayaran');
+            return redirect()->back();
+        }
         // Call the fHitungNomorMeja function
         $jumlahNoMeja = DB::select("SELECT fHitungNomorMeja(?) AS order_count", [$request->nomor_meja])[0]->order_count;
 
@@ -115,7 +159,11 @@ class CheckoutController extends Controller
         Pembayaran::create([
             "no_order" => $no_order,
             "total_pembayaran" => $request->total
-        ]);
+        ]);       
+
+        
+
+
 
         // Get the authenticated user
         $user = Auth::user();
@@ -129,10 +177,19 @@ class CheckoutController extends Controller
 
     public function pembayaran($no_order)
     {
+
+
+        if (!session()->has('start_time')) {
+            session(['start_time' => time()]);
+        }
+
         $order = Auth::user()->orders()
             ->where('no_order', $no_order)
             ->where('status', 'Menunggu Pembayaran')
             ->first();
+
+        // dd($order);
+
 
         $total = $order->detail_orders->sum('subtotal');
 
@@ -142,6 +199,8 @@ class CheckoutController extends Controller
     public function bayar(Request $request, $no_order)
     {
         // dd($request->all());
+
+        session()->forget('start_time');
 
         $orders = Auth::user()->orders()
             ->where('no_order', $no_order)
@@ -223,6 +282,8 @@ class CheckoutController extends Controller
 
     public function cancel(Request $request, $no_order)
     {
+        session()->forget('start_time');
+
         $order = Auth::user()->orders()->where('no_order', $no_order)->first();
 
         if (!$order) {

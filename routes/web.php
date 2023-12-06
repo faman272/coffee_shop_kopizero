@@ -175,6 +175,12 @@ Route::get('/dashboard/logcart', [LogsController::class, 'logCart'])->middleware
 //Log Order
 Route::get('/dashboard/logorder', [LogsController::class, 'logOrder'])->middleware(['auth', 'verified', 'role', 'superadmin'])->name('logorder');
 
+//log Akun
+Route::get('/dashboard/logakun', [LogsController::class, 'logAkun'])->middleware(['auth', 'verified', 'role', 'superadmin'])->name('logakun');
+
+
+
+
 
 require __DIR__ . '/auth.php';
  

@@ -4,12 +4,12 @@
 <main class="app-content">
     <div class="app-title">
         <div>
-            <h1><i class="fa fa-desktop"></i> Logs</h1>
-            <p>All Logs</p>
+            <h1><i class="fa fa-desktop"></i> Log Akun</h1>
+            <p>Log Akun</p>
         </div>
         <ul class="app-breadcrumb breadcrumb">
             <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
-            <li class="breadcrumb-item"><a href="#">Logs</a></li>
+            <li class="breadcrumb-item"><a href="#">Log Akun</a></li>
         </ul>
     </div>
 
@@ -23,40 +23,32 @@
                             <thead>
                                 <tr>
                                     <th>
-                                        Tabel
-                                    </th>
-                                    <th>
                                         Waktu
                                     </th>
                                     <th>Aksi</th>
-                                    <th>Keterangan</th>
+                                    <th>Keterangan</th>                               
                                 </tr>
                             </thead>
                             <tbody>
 
-
-
                                 @foreach ($logs as $log)
                                     <tr>
-                                        <td>
-                                            <b>{{ $log->nama_tabel }}</b>
-                                        </td>
                                         <td>
                                             {{ $log->created_at }}
                                         </td>
 
                                         <td>
-                                            <div style="color:
-
-                                            {{ $log->aksi == 'INSERT' ? 'green' : '' }}
+                                            <div style="color: 
+                                            
+                                            {{ $log->aksi == 'REGISTER' ? 'green' : '' }}
                                             {{ $log->aksi == 'UPDATE' ? 'blue' : '' }}
                                             {{ $log->aksi == 'DELETE' ? 'red' : '' }}
-
+                                            
                                             ">
                                                 {{ $log->aksi }}
                                             </div>
                                         </td>
-
+                                        
                                         <td>
                                             {{ $log->keterangan }}
                                         </td>

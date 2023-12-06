@@ -39,7 +39,7 @@
     <section class="home" id="home">
         <div class="row">
             <div class="content">
-                <h3>fresh coffee in the morning</h3>
+                <h3>a good day start with our great coffee</h3>
                 <a href="#menu" class="btn">Beli Sekarang</a>
             </div>
 

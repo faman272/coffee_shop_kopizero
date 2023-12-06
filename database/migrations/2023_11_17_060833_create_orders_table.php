@@ -22,11 +22,6 @@ return new class extends Migration
             $table->text('catatan')->nullable();    
             $table->foreignId('metode_pembayaran_id')->constrained('metode_pembayaran')->nullable();
             $table->timestamps();
-            // $table->foreign('user_id')
-            //       ->references('id_user')
-            //       ->on('users')
-            //       ->onUpdate('cascade')
-            //       ->onDelete('restrict');
             
         });
     }

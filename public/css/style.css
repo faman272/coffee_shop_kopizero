@@ -156,7 +156,7 @@ section {
 }
 
 .home .row .content h3 {
-    font-size: 6.5rem;
+    font-size: 5rem;
     color: var(--main-color);
     text-transform: uppercase;
 }
@@ -685,19 +685,15 @@ ul {
 .wave {
     position: absolute;
     bottom: 0;
-    left: 0;
+    left: 2%;
     z-index: 1;
     width: calc(100% - 22.97%);
     height: 80%;
-    background-color: #C3AE89;
+    background-color: #c7af86;
     border-radius: 0 0 40% 40%;
-    animation: waveUp 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940);
+    animation: waveUp 3s cubic-bezier(0, 0, 0.01, 0.99);
 }
 
-.wave__path {
-    stroke: none;
-    fill: #c2b7a4;
-}
 
 .smoke {
     position: absolute;

@@ -7,6 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kopi Zero</title>
 
+    <link rel="icon" href="/image/paw-img.png">
+
     <!-- SWIPER -->
     <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
 
@@ -44,6 +46,22 @@
         <div class="pembayaran">
             <h1>Pembayaran</h1>
 
+            <style>
+                .total-bayar {
+                    display: flex;
+                    justify-content: flex-start;
+                    margin-left: 2rem;
+                }
+
+                .total-bayar h1 {
+                    font-size: 28px;
+                    color: #c7af86;
+                    font-height: 700;
+                    text-decoration: underline
+                }
+            </style>
+
+
             {{-- <div class="clock-container">
                 <div id="clockdiv">
                     <div><span class="minutes"></span>
@@ -53,13 +71,24 @@
                 </div>
             </div> --}}
 
+
+            <div class="total-bayar">
+                <h1>Rp.{{ number_format($total, 0, ',', '.') }}</h1>
+            </div>
+
+
             {{-- <script>
                 var countdownElementMinutes = document.querySelector('#clockdiv .minutes');
                 var countdownElementSeconds = document.querySelector('#clockdiv .seconds');
-                var timeRemaining = 10 * 60;
+                var startTime = localStorage.getItem('start_time') || Math.floor(Date.now() / 1000);
+                localStorage.setItem('start_time', startTime);
+                var totalDuration = 3 * 60; // 1 minute
 
                 var countdown = setInterval(function() {
-                    timeRemaining--;
+                    var currentTime = Math.floor(Date.now() / 1000); // Current timestamp in seconds
+                    var elapsedTime = currentTime - startTime;
+                    var timeRemaining = totalDuration - elapsedTime;
+
                     var minutes = Math.floor(timeRemaining / 60);
                     var seconds = timeRemaining % 60;
 
@@ -67,7 +96,11 @@
                     countdownElementSeconds.textContent = seconds < 10 ? '0' + seconds : seconds;
 
                     if (timeRemaining <= 0) {
+
                         clearInterval(countdown);
+                        countdownElementMinutes.textContent = '00';
+                        countdownElementSeconds.textContent = '00';
+                        // document.getElementById('cancel-form').submit();
                     }
                 }, 1000);
             </script> --}}
@@ -150,7 +183,7 @@
                     <p>* Silahkan Melakukan Pembayaran sebesar <span>Rp.{{ number_format($total, 0, ',', '.') }}</span>
                         Pada Kode QRIS ini: </p>
                     <img src="/image/qris.png" alt="" width="40%" class="qris">
-                    <a href="#" class="btn">Download</a>
+                    <a href="http://127.0.0.1:80/qris.pdf" class="btn">Download</a>
                     <p>QR ini bisa di scan untuk :</p>
                     <img src="/image/qris-sup.png" alt="" class="qris-sup">
                 @else
@@ -163,7 +196,7 @@
             {{-- Cekkk kalo cash ini tidak tampil --}}
             @if ($order->metode_pembayaran_id !== 3)
                 <div class="box">
-                    <span>Upload Bukti Transaksi :</span>
+                    <span>Upload Bukti Transaksi : Max(2MB)</span>
                     <input type="file" id="bukti_pembayaran" name="bukti_pembayaran">
                 </div>
             @endif

@@ -43,7 +43,7 @@
                 </svg>
             </div>
             <img class="cup-image"
-                src="https://trello-attachments.s3.amazonaws.com/5a03b4a6c22e5d0ae1e5d752/59f49abbc6fcb3b7e4865eab/c4d7fa0303ff5d87ac17442850791116/coffee-cup.png"
+                src="/image/cup.png"
                 alt="coffee cup">
             <div class="smoke">
                 @foreach ([1, 2, 3] as $smoke)
@@ -107,7 +107,9 @@
 
                 <div class="btn-checkout">
                     <a href="/cart" class="btn">Back</a>
-                    <button id="checkout-button" type="button" class="btn">Checkout Sekarang</button>
+                    <button id="checkout-button" type="button" class="btn"
+                    onclick=""
+                    >Checkout Sekarang</button>
                 </div>
             </form>
         @endforeach

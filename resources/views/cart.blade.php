@@ -7,6 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kopi Zero</title>
 
+    <link rel="icon" href="/image/paw-img.png">
+
+
     <!-- SWIPER -->
     <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
 
@@ -42,7 +45,7 @@
                 </svg>
             </div>
             <img class="cup-image"
-                src="https://trello-attachments.s3.amazonaws.com/5a03b4a6c22e5d0ae1e5d752/59f49abbc6fcb3b7e4865eab/c4d7fa0303ff5d87ac17442850791116/coffee-cup.png"
+                src="/image/cup.png"
                 alt="coffee cup">
             <div class="smoke">
                 @foreach ([1, 2, 3] as $smoke)

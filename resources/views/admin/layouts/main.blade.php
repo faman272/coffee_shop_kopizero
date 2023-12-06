@@ -42,7 +42,7 @@
             cluster: 'ap1'
         });
 
-        var notificationCount = 0;  
+        var notificationCount = 0;
 
         var channel = pusher.subscribe('kopi_zero');
         channel.bind('user-order', function(data) {
@@ -131,10 +131,10 @@
 
         <!-- Navbar Right Menu-->
         <ul class="app-nav">
-            <li class="app-search">
+            {{-- <li class="app-search">
                 <input class="app-search__input" type="search" placeholder="Search">
                 <button class="app-search__button"><i class="bi bi-search"></i></button>
-            </li>
+            </li> --}}
 
             <!--Notification Menu-->
             <li class="dropdown"><a class="app-nav__item" href="#" data-bs-toggle="dropdown"
@@ -142,6 +142,9 @@
 
                     <span class="badge bg-danger rounded-pill"></span>
 
+                    @if ($notificationCount > 0)
+                        <span class="badge bg-danger rounded-pill"> </span>
+                    @endif
                 </a>
 
                 <ul class="app-notification dropdown-menu dropdown-menu-right">

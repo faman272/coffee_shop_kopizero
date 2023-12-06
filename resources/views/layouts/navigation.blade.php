@@ -22,6 +22,7 @@
         <a href="/">home</a>
         <a href="#about">about</a>
         <a href="#menu">menu</a>
+        <a href="#map">location</a>
     </nav>
     @if (Route::has('login'))
         <div class="sm:fixed sm:top-0 sm:right-0 p-6 text-right z-10">
@@ -181,7 +182,7 @@
             @else
                 @if (Route::has('register'))
                     <a href="{{ route('login') }}" class="btn">Login</a>
-                    <a href="{{ route('register') }}" class="btn">Daftar Akun</a>
+                    <a href="{{ route('register') }}" class="btn">Register</a>
                 @endif
 
             @endauth
@@ -195,12 +196,9 @@
  <div id="loading" style="display: none">
     <div class="cup">
         <div class="wave">
-            <svg viewBox="0 0 500 500">
-                <path class="wave__path" d="M0,100 C150,200 350,0 500,100 L500,00 L0,0 Z"></path>
-            </svg>
         </div>
         <img class="cup-image"
-            src="https://trello-attachments.s3.amazonaws.com/5a03b4a6c22e5d0ae1e5d752/59f49abbc6fcb3b7e4865eab/c4d7fa0303ff5d87ac17442850791116/coffee-cup.png"
+            src="/image/cup.png"
             alt="coffee cup">
         <div class="smoke">
             @foreach ([1, 2, 3] as $smoke)
