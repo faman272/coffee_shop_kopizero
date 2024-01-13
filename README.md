@@ -1,6 +1,7 @@
 <h1 style="color:blue">Website Coffee Shop Kopi Zero With Laravel 10 Vanila CSS</h1>
 
-[For Full SS Click Me]([https://hospital-management-system.tauseedzaman.com](https://geode-pea-abb.notion.site/Coffee-Shop-Kopi-Zero-7175b4b3873748c79fd34f50f05e86b0)https://geode-pea-abb.notion.site/Coffee-Shop-Kopi-Zero-7175b4b3873748c79fd34f50f05e86b0)
+[For Full SS Click Me](https://geode-pea-abb.notion.site/Coffee-Shop-Kopi-Zero-7175b4b3873748c79fd34f50f05e86b0)
+
 
 <h3>Front End</h3>
 
@@ -29,12 +30,9 @@
     <li> <a href="http://127.0.0.1:8000/">http://127.0.0.1:8000/</a> </li>
 </ul>
 
-<h3>Kelompok 1.</h3>
+<h3>Kelompok 1 MSBD</h3>
 - Admin: admin@gmail.com , password: admin 
 
-
-
-`
-    [For Full SS Click Me]([https://hospital-management-system.tauseedzaman.com](https://geode-pea-abb.notion.site/Coffee-Shop-Kopi-Zero-7175b4b3873748c79fd34f50f05e86b0)https://geode-pea-abb.notion.site/Coffee-Shop-Kopi-Zero-7175b4b3873748c79fd34f50f05e86b0)
+[For Full SS Click Me](https://geode-pea-abb.notion.site/Coffee-Shop-Kopi-Zero-7175b4b3873748c79fd34f50f05e86b0)
 
 
