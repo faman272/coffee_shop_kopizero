@@ -34,6 +34,12 @@ class AuthenticatedSessionController extends Controller
         return redirect()->intended(RouteServiceProvider::HOME);
     }
 
+    protected function authenticated(Request $request, $user)
+    {
+        if (!$user->hasVerifiedEmail()) {
+            return redirect()->intended(route('verification.notice'));
+        }
+    }
     /**
      * Destroy an authenticated session.
      */

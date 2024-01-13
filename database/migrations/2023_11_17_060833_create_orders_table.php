@@ -20,9 +20,8 @@ return new class extends Migration
             $table->char('nomor_meja', 2)->nullable();
             $table->enum('status', ['Menunggu Pembayaran', 'Diproses', 'Diterima', 'Dibatalkan', 'Pending'])->default('Menunggu Pembayaran');
             $table->text('catatan')->nullable();    
-            $table->foreignId('metode_pembayaran_id')->constrained('metode_pembayaran')->nullable();
+            $table->foreignId('metode_pembayaran_id')->nullable()->constrained('metode_pembayaran');
             $table->timestamps();
-            
         });
     }
 

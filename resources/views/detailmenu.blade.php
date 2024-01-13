@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <title>Kopi Zero</title>
 
     <link rel="icon" href="/image/paw-img.png">
@@ -20,7 +21,6 @@
     <!-- Custom CSS File Link  -->
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/detail.css">
-
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -46,7 +46,7 @@
                     <input type="hidden" name="menu_id" value="{{ $menu->id_menu }}">
 
                     {{-- <input type="hidden" name="user_id" value="{{ Auth::user()->id }}"> --}}
-                    
+
                     <div class="radio-item-container">
                         @if ($menu->H_Hot > 0)
                             <div class="radio-item">
@@ -66,10 +66,6 @@
                             </div>
                         @endif
                     </div>
-
-
-
-
                     <div class="desc-container">
                         <h2>Deskripsi : </h2>
                         <p>{{ $menu->deskripsi }}</p>
@@ -80,7 +76,7 @@
                     </div>
                     <div class="btn-container">
                         <a href="/" class="btn">Back</a>
-                        <button type="submit" class="btn">Beli</button>
+                        <button type="submit" class="btn" id="buyButton">Beli</button>
                     </div>
                 </form>
             </fieldset>
@@ -95,8 +91,23 @@
     <!-- Custom JS File Link  -->
     <script src="js/script.js"></script>
 
-     <!-- Custom JS File Link  -->
-     <script>
+    <!-- Custom JS File Link  -->
+    <script>
+        document.getElementById('buyButton').addEventListener('click', function(event) {
+            event.preventDefault();
+            Swal.fire({
+                title: 'Konfirmasi Sebelum Pesan',
+                text: 'Pastikan Anda sudah berada di kedai kopi sebelum memesan menu, cek lokasinya di bagian location',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Saya sudah berada di lokasi',
+                cancelButtonText: 'Cancel'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    event.target.form.submit();
+                }
+            });
+        });
         let menu = document.querySelector('#menu-btn');
         let navbar = document.querySelector('.navbar');
 

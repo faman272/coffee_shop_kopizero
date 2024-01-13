@@ -1,0 +1,27 @@
+
+
+.email-container {
+    /* background-color: antiquewhite; */
+    margin-top: 8rem;
+    display: flex;
+    padding: 2rem;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.email-container span {
+    font-size: 36px;
+}
+
+.email-container p {
+    font-size: 16px;
+}
+
+.email-container a {
+    font-size: 2rem;
+    color: blue;
+    text-decoration: underline;
+}
+

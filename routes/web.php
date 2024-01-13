@@ -19,6 +19,7 @@ use App\Http\Controllers\NotificationController;
 
 use App\Http\Controllers\UserNotificationController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,87 +31,85 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
 
-
-// Route::get('/', function () {
-//         return view('home');
-// });
-
-// Route::get('/', [MenuController::class, 'index']);
 
 Route::get("/", [HomeController::class, 'index'])->name('home');
 // Example in your routes/web.php file
 Route::get('/detail/{id}', [MenuController::class, 'show']);
 
-// Cart Route
 Route::post('/detail/{id}', [CartController::class, 'create']);
 
-Route::get('/cart', [CartController::class, 'index'])
-    ->middleware('auth')
-    ->name('cart');
 
-Route::post('/cart', [CartController::class, 'store'])
-->middleware('auth')
-->name('cart.store');
+Route::middleware(['auth', 'verified'])->group(function () {
+    // Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    // Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    // Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-Route::get('/editcart/{id_keranjang}', [CartController::class, 'show'])
-->middleware('auth')
-->name('editcart');
+    //Cart
+    Route::get('/cart', [CartController::class, 'index'])
+        ->name('cart');
 
-Route::post('/cart/update/{id_keranjang}', [CartController::class, 'update'])
-->middleware('auth')
-->name('cart.update');
+    Route::post('/cart', [CartController::class, 'store'])
+        ->name('cart.store');
 
-Route::delete('/cart/{id_keranjang}', [CartController::class, 'delete'])
-->name('cart.delete');
+    Route::get('/editcart/{id_keranjang}', [CartController::class, 'show'])
+        ->name('editcart');
 
-//checkout
+    Route::post('/cart/update/{id_keranjang}', [CartController::class, 'update'])
+        ->name('cart.update');
 
-Route::post('/checkout', [CheckoutController::class, 'store'])->name('checkout.store')
-->middleware('auth');
+    Route::delete('/cart/{id_keranjang}', [CartController::class, 'delete'])
+        ->name('cart.delete');
 
 
-Route::get('/checkout', [CheckoutController::class, 'index'])
-    ->middleware('auth')
-    ->name('checkout');
+    //checkout
+    Route::post('/checkout', [CheckoutController::class, 'store'])
+        ->name('checkout.store');
 
-Route::post('/checkout/{id}', [CheckoutController::class, 'transaksi'])
-    ->middleware('auth')
-    ->name('checkout.transaksi');
 
-//pembayarn
-Route::get('/pembayaran/{no_order}', [CheckoutController::class, 'pembayaran'])
-    ->middleware('auth')
-    ->name('pembayaran');
+    Route::get('/checkout', [CheckoutController::class, 'index'])
+        ->name('checkout');
 
-Route::post('/pembayaran/cancel/{no_order}', [CheckoutController::class, 'cancel'])
-->middleware('auth')
-->name('pembayaran.cancel');
+    Route::post('/checkout/{id}', [CheckoutController::class, 'transaksi'])
+        ->name('checkout.transaksi');
 
-Route::post('/pembayaran/{id}', [CheckoutController::class, 'bayar'])
-    ->middleware('auth')
-    ->name('pembayaran.bayar');
+    //pembayarn
+    Route::get('/pembayaran/{no_order}', [CheckoutController::class, 'pembayaran'])
+        ->name('pembayaran');
 
-Route::get('/history', [HistoryController::class, 'index'])
-    ->middleware('auth')
-    ->name('history');
+    Route::post('/pembayaran/cancel/{no_order}', [CheckoutController::class, 'cancel'])
+        ->name('pembayaran.cancel');
 
-Route::get('/detailhistory/{id}', [HistoryController::class, 'detail'])
-    ->middleware('auth')
-    ->name('detailhistory');
+    Route::post('/pembayaran/{id}', [CheckoutController::class, 'bayar'])
+        ->name('pembayaran.bayar');
 
-Route::get('/notification', [UserNotificationController::class, 'index'])
-    ->middleware('auth')
-    ->name('notification');
 
-Route::delete('/notification/{id}', [UserNotificationController::class, 'destroy'])
-    ->middleware('auth')
-    ->name('notification.delete');
+    //History Transaksi
+    Route::get('/history', [HistoryController::class, 'index'])
+        ->name('history');
+
+    Route::get('/detailhistory/{id}', [HistoryController::class, 'detail'])
+        ->name('detailhistory');
+
+    //Notification User
+    Route::get('/notification', [UserNotificationController::class, 'index'])
+        ->name('notification');
+
+    Route::delete('/notification/{id}', [UserNotificationController::class, 'destroy'])
+        ->name('notification.delete');
+});
+
+
+
+
+
+//email vefif 
+Route::post('/email/verification-notification', function (Request $request) {
+    $request->user()->sendEmailVerificationNotification();
+ 
+    return back()->with('message', 'Verification link sent!');
+})->middleware(['auth', 'throttle:6,1'])->name('verification.send');
+
 
 
 
@@ -120,7 +119,6 @@ Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['au
 
 //CRUD Menu
 Route::resource('dashboard/menu', DashboardMenuController::class)->middleware(['auth', 'verified', 'role']);
-
 
 //CRUD Kategori
 Route::resource('dashboard/kategori', DashboardKategoriController::class)->middleware(['auth', 'verified', 'role']);
@@ -151,7 +149,6 @@ Route::resource('/dashboard/metode_pembayaran', DashboardMetodeController::class
 
 
 
-
 //Manage Account
 Route::resource('/dashboard/manage_account', ManageAccountController::class)->middleware(['auth', 'verified', 'role', 'superadmin']);
 Route::post('/dashboard/manage_account/{id}', [ManageAccountController::class, 'update'])->middleware(['auth', 'verified', 'role', 'superadmin'])->name('manage_account.ubah');
@@ -163,7 +160,6 @@ Route::resource('/dashboard/notification', NotificationController::class)->middl
 Route::get('/notifications/{id}/read', [NotificationController::class, 'markAsRead'])->name('notifications.read');
 
 Route::post('/notifications/read', [NotificationController::class, 'markAll'])->name('notifications.all');
-
 
 
 //Logs
@@ -183,4 +179,3 @@ Route::get('/dashboard/logakun', [LogsController::class, 'logAkun'])->middleware
 
 
 require __DIR__ . '/auth.php';
- 

@@ -13,8 +13,6 @@ class CartController extends Controller
 {
     public function index()
     {
-
-
         // Retrieve the user's cart items
         $cartItems = Auth::user()->carts;
 

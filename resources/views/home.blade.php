@@ -34,7 +34,7 @@
     <!-- HEADER -->
     @include('layouts.navigation')
 
-   
+
     <!-- HOME -->
     <section class="home" id="home">
         <div class="row">
@@ -82,11 +82,12 @@
 
     {{-- Menu --}}
     @include('layouts.kopi')
-    @include('layouts.nonkopi')
+    {{-- @include('layouts.nonkopi') --}}
 
 
 
     @include('layouts.footer')
+
 
     <!-- SWIPER -->
     <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
@@ -105,15 +106,16 @@
             menu.classList.remove('fa-times');
             navbar.classList.remove('active');
         };
+        
+        
 
         document.querySelectorAll('.image-slider img').forEach(images => {
             images.onclick = () => {
-                var src = images.getAttribute('src');
-                document.querySelector('.main-home-image').src = src;
+                document.querySelector('.main-home-image').src = images.getAttribute('src');
             };
         });
 
-        var swiper = new Swiper(".review-slider", {
+        let swiper = new Swiper(".review-slider", {
             spaceBetween: 20,
             pagination: {
                 el: ".swiper-pagination",

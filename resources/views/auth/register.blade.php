@@ -25,7 +25,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet" />
 
-
 </head>
 
 <body>
@@ -43,7 +42,7 @@
             <div class="input-container">
 
                 <div class="label-container">
-                    <label for="name">Nama</label>
+                    <label for="name">*Nama</label>
                     <input id="name" type="text" name="name" class="box" placeholder="Nama"
                         value="{{ old('name') }}" @error('name') is-invalid @enderror>
 
@@ -58,11 +57,14 @@
                         @enderror
                     </script>
                 </div>
-
+                
                 <div class="label-container">
-                    <label for="email">Email</label>
+                    <label for="email">*Email</label>
                     <input id="email" type="email" name="email" class="box" placeholder="Email"
                         value="{{ old('email') }}" @error('email') is-invalid @enderror>
+
+                
+                    <p style="color: rgb(220, 106, 106)">*Need Verification</p>
 
                     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
                     <script>
@@ -77,9 +79,10 @@
                 </div>
 
                 <div class="label-container">
-                    <label for="no_telp">No Telepon</label>
+                    <label for="no_telp">*No Telepon</label>
                     <input id="no_telp" type="text" name="no_telp" class="box" placeholder="No Telepon"
-                        value="{{ old('no_telp') }}" @error('no_telp') is-invalid @enderror>
+                        value="{{ old('no_telp') }}" @error('no_telp') is-invalid @enderror maxlength="13">
+
 
                     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
                     <script>
@@ -127,6 +130,12 @@
 
             </div>
 
+            <div class="captcha">
+                <div class="g-recaptcha" data-sitekey="6LdRRSkpAAAAAOw3FMNtG_mpkhgZAe4L5-KjOJAT" @required(true)></div>
+            </div>
+            
+
+
             <div class="btn-container">
                 <a href="{{ route('login') }}">Already Registered?</a>
                 <button type="submit" class="btn">Register</button>
@@ -136,6 +145,8 @@
 
     </div>
 
+    {{-- Recaptcha --}}
+    <script async src="https://www.google.com/recaptcha/api.js" async defer></script>
     <!-- SWIPER -->
     <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
 

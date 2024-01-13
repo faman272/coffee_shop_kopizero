@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\OrderDiterima;
 use App\Models\Order;
 use App\Models\UserNotification;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
 
 use App\Events\UserNotif;
+use Illuminate\Support\Facades\Mail;
 
 class DashboardPesananController extends Controller
 {
@@ -61,10 +63,10 @@ class DashboardPesananController extends Controller
     {
         $userId = $request->input('user_id');
 
+        $order = Order::with('detail_orders.menus')->find($id);
 
         if ($request->input('status') === 'Diproses') {
 
-            $order = Order::find($id);
             $order->status = $request->status;
             $order->save();
 
@@ -86,14 +88,12 @@ class DashboardPesananController extends Controller
                 "status" => "Diterima",
             ]);
 
+            Mail::to($order->user->email)->send(new OrderDiterima($order));
+            
             Alert::success('Pesanan', 'Diterima');
             return redirect('/dashboard/pesanan');
 
         }
-
-
-
-
 
     }
 

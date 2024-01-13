@@ -31,10 +31,10 @@ class RegisteredUserController extends Controller
      * @throws \Illuminate\Validation\ValidationException
      */
 
-     public function generateIdUser()
-     {
-         return str_pad(rand(0, 999999), 6, '0', STR_PAD_LEFT);
-     }
+    public function generateIdUser()
+    {
+        return str_pad(rand(0, 999999), 6, '0', STR_PAD_LEFT);
+    }
 
     public function store(Request $request): RedirectResponse
     {
@@ -43,13 +43,14 @@ class RegisteredUserController extends Controller
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:' . User::class],
             'no_telp' => ['required', 'numeric'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'g-recaptcha-response' => 'required|captcha'
         ]);
 
         // Generate a unique ID for the user ID
         $idUser = $this->generateIdUser();
 
         $user = User::create([
-            'id' => $idUser, 
+            'id' => $idUser,
             'name' => $request->name,
             'email' => $request->email,
             'no_telp' => $request->no_telp,
@@ -61,6 +62,6 @@ class RegisteredUserController extends Controller
         Auth::login($user);
 
         Alert::success('Registrasi Berhasil');
-        return redirect(RouteServiceProvider::HOME);
+        return redirect()->route('verification.notice');
     }
 }

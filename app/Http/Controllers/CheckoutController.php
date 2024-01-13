@@ -57,7 +57,7 @@ class CheckoutController extends Controller
         ]);
     }
 
-    public function generateNoOrder()
+    public function generateNoOrder(): int
     {
         return rand(100000, 999999);
     }
@@ -126,8 +126,6 @@ class CheckoutController extends Controller
             $detailOrder->save();
         }
 
-        
-
 
         return redirect("/checkout");
     }
@@ -159,11 +157,7 @@ class CheckoutController extends Controller
         Pembayaran::create([
             "no_order" => $no_order,
             "total_pembayaran" => $request->total
-        ]);       
-
-        
-
-
+        ]);
 
         // Get the authenticated user
         $user = Auth::user();
@@ -177,7 +171,6 @@ class CheckoutController extends Controller
 
     public function pembayaran($no_order)
     {
-
 
         if (!session()->has('start_time')) {
             session(['start_time' => time()]);

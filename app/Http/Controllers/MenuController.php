@@ -2,11 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Menu;
-use App\Models\User;
-use App\Models\Cart;
-
 class MenuController extends Controller
 {
     public function index() {

@@ -16,8 +16,19 @@ return [
     'defaults' => [
         'guard' => 'web',
         'passwords' => 'users',
+        'verification' => 'users',
     ],
 
+
+
+    'verification' => [
+        'users' => [
+            'provider' => 'users',
+            'table' => 'email_verification_tokens',
+            'expire' => 60,
+        ],
+    ],
+    
     /*
     |--------------------------------------------------------------------------
     | Authentication Guards
