@@ -24,7 +24,8 @@
     <li> > create database with name "kopi_zero" or Import .sql file "KopiZero.sql"</li>
     <li> > php artisan key:generate</li>
     <li> > php artisan storage:link</li>
-    <li> > migrate and seed php artisan migrate:fresh --seed</li>
+    <li> > php artisan migrate:fresh --seed</li>
+    <li> > php artisan db:seed</li>
     <li> > php artisan serve</li>
     <li> <a href="http://127.0.0.1:8000/">http://127.0.0.1:8000/</a> </li>
 </ul>
