@@ -3,11 +3,11 @@
 [For Full ScreenShot and Feature Click Me](https://geode-pea-abb.notion.site/Coffee-Shop-Kopi-Zero-7175b4b3873748c79fd34f50f05e86b0)
 
 
-<h3>Front End</h3>
+<h3>Front End Responsive</h3>
 
 <img src="home.png" />
 
-<h3>Back End</h3>
+<h3>Back End Realtime Notification</h3>
 
 <img src="admin.png" />
 
@@ -31,8 +31,7 @@
 
 <h3>Kelompok 1 MSBD</h3>
 - Admin: admin@gmail.com , password: admin 
-`
-
+<br> <br>
 [For Full ScreenShot and Feature Click Me](https://geode-pea-abb.notion.site/Coffee-Shop-Kopi-Zero-7175b4b3873748c79fd34f50f05e86b0)
 
 
