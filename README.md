@@ -20,18 +20,18 @@
     <li>Clone the Repo: <br> </li>
     <li style=""> > git clone https://github.com/faman272/coffee_shop_kopizero.git</li>
     <li> > cd coffee_shop_kopizero</li>
-    <li> > composer install or composer update</li>
-    <li> > create database with name "kopi_zero" </li>
-    <li> > Set up .env file</li>
+    <li> > composer update or composer install</li>
+    <li> > create database with name "kopi_zero" or Import .sql file "KopiZero.sql"</li>
     <li> > php artisan key:generate</li>
     <li> > php artisan storage:link</li>
-    <li> > php artisan migrate:fresh --seed</li>
+    <li> > migrate and seed php artisan migrate:fresh --seed</li>
     <li> > php artisan serve</li>
     <li> <a href="http://127.0.0.1:8000/">http://127.0.0.1:8000/</a> </li>
 </ul>
 
 <h3>Kelompok 1 MSBD</h3>
 - Admin: admin@gmail.com , password: admin 
+`
 
 [For Full ScreenShot and Feature Click Me](https://geode-pea-abb.notion.site/Coffee-Shop-Kopi-Zero-7175b4b3873748c79fd34f50f05e86b0)
 
